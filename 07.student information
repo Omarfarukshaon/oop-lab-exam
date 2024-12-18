@@ -1,0 +1,71 @@
+/* 07.create a class student which has data 
+members as name ,semester, roll,section ,and marks in five subjects
+.Write a c++ program to display all information of the students with total marks. */
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+    string name,semester;
+    int marks[5], roll;
+    char section;
+public:
+    void input() {
+        cin.ignore(); // Clear input buffer before using getline
+        cout << "Enter name: ";
+        getline(cin, name);
+        cout << "Enter semester: ";
+        getline(cin, semester);
+        cout << "Enter roll number: ";
+        cin >> roll;
+        cout << "Enter section: ";
+        cin >> section;
+        cout << "Enter marks in 5 subjects: ";
+        for (int i = 0; i < 5; i++) {
+            cin >> marks[i];
+        }
+    }
+
+    int totalMarks() {
+        int total = 0;
+        for (int i = 0; i < 5; i++) {
+            total += marks[i];
+        }
+        return total;
+    }
+
+    void display() {
+        cout << "\nName: " << name 
+             << "\nSemester: " << semester 
+             << "\nRoll Number: " << roll 
+             << "\nSection: " << section 
+             << "\nMarks in 5 subjects: ";
+        for (int i = 0; i < 5; i++) {
+            cout << marks[i] << " ";
+        }
+        cout << "\nTotal Marks: " << totalMarks() << "\n";
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter the number of students: ";
+    cin >> n;
+
+    Student* students = new Student[n];
+    
+    for (int i = 0; i < n; i++) {
+        cout << "\nEntering details for student " << i + 1 << ":\n";
+        students[i].input();
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nDetails of student " << i + 1 << ":\n";
+        students[i].display();
+    }
+
+    delete[] students; 
+    cout<<"\n"<<"\n";
+    return 0;
+}
