@@ -1,0 +1,42 @@
+/* 08.write a c++ program to find the square and 
+cube of a number read from keyboard.
+(Demonstrate th concept of inheritance) */
+
+#include <iostream>
+using namespace std;
+
+class Number {
+    int num;
+public:
+    void read() {
+        cout << "Enter a number: ";
+        cin >> num;
+    }
+    int getNum() {
+        return num;
+    }
+};
+
+class Square : public Number {
+public:
+    int getSquare() {
+        return getNum() * getNum();
+    }
+};
+
+class Cube : public Square {
+public:
+    int getCube() {
+        return getNum() * getNum() * getNum();
+    }
+};
+
+int main() {
+    Cube obj;
+    obj.read();
+    
+    cout << "Square of the number: " << obj.getSquare() << endl;
+    cout << "Cube of the number: " << obj.getCube() << endl;
+    
+    return 0;
+}
