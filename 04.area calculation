@@ -1,0 +1,43 @@
+/* 04.Write a c++ program to find the area of triangle,
+circle and rectangle using function overloading. */
+
+#include <iostream>
+#include <cmath>
+#define PI 3.1416
+using namespace std;
+
+float area(int, int);     
+float area(int);             
+float area(float, float);    
+
+int main() {
+    int length, width;
+    int radius;
+    float base, height;
+    
+    cout << "Enter length and width of rectangle: ";
+    cin >> length >> width;
+    cout << "Area of rectangle = " << area(length, width) << endl;
+    
+    cout << "\nEnter radius of circle: ";
+    cin >> radius;
+    cout << "Area of circle = " << area(radius) << endl;
+    
+    cout << "\nEnter base and height of triangle: ";
+    cin >> base >> height;
+    cout << "Area of triangle = " << area(base, height) << endl;
+    
+    return 0;
+}
+
+float area(int length, int width) {
+    return length * width;
+}
+
+float area(int radius) {
+    return PI * radius * radius;
+}
+
+float area(float base, float height) {
+    return 0.5 * base * height;
+}
